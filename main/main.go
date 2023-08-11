@@ -24,7 +24,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("server listen %s://%s", network, addr)
+	fmt.Printf("server listen %s://%s\n", network, addr)
 	// Create SOCKS5 proxy on localhost port 8000
 	if err := server.ListenAndServe(network, addr); err != nil {
 		panic(err)

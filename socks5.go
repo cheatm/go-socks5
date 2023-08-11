@@ -158,6 +158,10 @@ func (s *Server) ServeConn(conn net.Conn) error {
 		request.RemoteAddr = &AddrSpec{IP: client.IP, Port: client.Port}
 	}
 
+	if doInfo {
+		s.config.Logger.Printf("[INFO] %s -> %s", request.RemoteAddr, request.DestAddr)
+	}
+
 	// Process the client request
 	if err := s.handleRequest(request, conn); err != nil {
 		err = fmt.Errorf("Failed to handle request: %v", err)
